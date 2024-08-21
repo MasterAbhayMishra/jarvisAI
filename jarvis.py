@@ -9,6 +9,7 @@ import pyautogui
 import openai
 import wikipedia
 import pywhatkit as kit
+import sys
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -135,13 +136,17 @@ if __name__ == "__main__":
          speak("ok , opening your linkedin account")
          webbrowser.open(f"https://www.linkedin.com/in/abhay-mishra-83a1112a9/")
         
-        elif "send message" in query:
-          speak        # else:
-        #     user_input = query
-        #     print(ask_openai(user_input))
-    #   just added a comment
-# added one more comment
-          break
+        elif "send a message" in query:
+          speak("whome u want to send the message")  
+          name = take_command()
+          speak("what message u want to send")
+          msg=take_command()
+          kit.sendwhatmsg({name},{msg},2,25) 
+        elif "no thanks" in query or "stop" in query:
+           speak("ok sir , have a good day")
+           sys.exit()
+        
+    speak("any thing else sir")  
 
 
 
