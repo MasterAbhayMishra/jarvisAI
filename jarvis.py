@@ -8,6 +8,7 @@ import cv2
 import pyautogui
 import openai
 import wikipedia
+import pywhatkit as kit
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -122,14 +123,25 @@ if __name__ == "__main__":
          speak("ok, searching your request in youtube")
          webbrowser.open(f"https://www.youtube.com/results?search_query={search}")
         
-        # else:
+          
+        elif "what" in query or "can" in query or "why" in query or "who" in query :
+            quer = query.replace("wikipedia","")
+            results = wikipedia.summary(query,sentences=2)
+            speak("according to wikipedia")
+            speak(results)
+        elif "linkedin " in query :
+        #  speak("what u would like to listen")
+        #  song= take_command()
+         speak("ok , opening your linkedin account")
+         webbrowser.open(f"https://www.linkedin.com/in/abhay-mishra-83a1112a9/")
+        
+        elif "send message" in query:
+          speak        # else:
         #     user_input = query
         #     print(ask_openai(user_input))
     #   just added a comment
 # added one more comment
-          
-       
-        break
+          break
 
 
 
